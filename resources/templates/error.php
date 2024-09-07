@@ -54,7 +54,7 @@
         <div class="card-body error__info__container d-flex flex-column">
             <ul class="list-unstyled">
                 <li>Error code: <b><?=$errno?></b></li>
-                <li>Error! <?=$errstr?>.</li>
+                <li><?=$errstr?>.</li>
 <!--                <li>In file <b>--><?php //=$errfile?><!--</b></li>-->
 <!--                <li>On line <b>--><?php //=$errline?><!--</b></li>-->
             </ul>
@@ -74,26 +74,6 @@
         </div>
     </div>
 </div>
-
-
-<!--<div class="container">-->
-<!--    <div class="d">-->
-<!--        <h1 class="heading">ERROR PAGE.</h1>-->
-<!--        <br>-->
-<!--        <div class="error__info">-->
-<!--            <p>Error code: <b>--><?php //=$errno?><!--</b></p>-->
-<!--            <p>Error! --><?php //=$errstr?><!--.</p>-->
-<!--            <p>In file <b>--><?php //=$errfile?><!--</b></p>-->
-<!--            <p>On line <b>--><?php //=$errline?><!--</b></p>-->
-<!---->
-<!--        </div>-->
-<!--        <div class="error__file__preview">-->
-<!--            <pre>-->
-<!--                --><?php //=$file?>
-<!--            </pre>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

@@ -2,7 +2,7 @@
     "name": "twocoffeecups/php-error-handler",
     "type": "library",
     "description": "A simple and easy php error handler.",
-    "keywords": ["php", "errors", "handler", "debug"],
+    "keywords": ["errors", "handler", "debug"],
     "license": "MIT",
     "authors": [
         {
@@ -13,12 +13,12 @@
 
     "autoload": {
         "psr-4": {
-          "TwoCoffeCups\\ErrorHandler\\": ""
+          "TwoCoffeCups\\PHPErrorHandler\\": ""
         }
     },
 
     "require": {
-      "php": "^7.4 | ^8.0"
+      "php": "^8.0"
     },
 
     "minimum-stability": "dev"

@@ -1,12 +1,25 @@
 <?php
 
-namespace TwoCoffeCups\ErrorHandler\Render;
+namespace TwoCoffeCups\PHPErrorHandler\Render;
 
 class ErrorRender
 {
+    /**
+     * Path to error page
+     */
     protected const ERROR_PAGE = __DIR__ . '/../resources/templates/error.php';
     protected const MAX_LINE_IN_FILE = 6;
 
+    /**
+     * Calling the render function
+     * @param $errno
+     * @param $errstr
+     * @param $errfile
+     * @param $errline
+     * @param $trace
+     * @param $status
+     * @return void
+     */
     public static function show($errno, $errstr, $errfile, $errline, $trace, $status = 500)
     {
         $file = self::getCode($errfile, $errline);
@@ -14,6 +27,12 @@ class ErrorRender
         die;
     }
 
+    /**
+     * TODO: еренести в отдельный класс
+     * @param string $file
+     * @param $line
+     * @return array|string|string[]
+     */
     public static function getCode(string $file, $line)
     {
         $fileWithError = file($file);
@@ -31,6 +50,11 @@ class ErrorRender
 
     }
 
+    /**
+     * Display the error page
+     * @param array $variables
+     * @return false|string
+     */
     public static function render(array $variables)
     {
         ob_start();

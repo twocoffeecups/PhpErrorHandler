@@ -2,6 +2,7 @@
 
 namespace TwoCoffeCups\PHPErrorHandler;
 
+use TwoCoffeCups\PHPErrorHandler\Exception\UnspecifiedFilePathException;
 use TwoCoffeCups\PHPErrorHandler\Logger\ErrorLogger;
 use TwoCoffeCups\PHPErrorHandler\Render\ErrorRender;
 
@@ -22,11 +23,13 @@ class ErrorHandler
 
     public function __construct(bool $saveLog = false, string|null $pathToLogFile = null)
     {
-        // create dir or use the default dir
-        $this->pathToLogFile =
-            $_SERVER['DOCUMENT_ROOT'] . "/../" . $pathToLogFile
-            ?? $_SERVER['DOCUMENT_ROOT'] . "/../logs";
         $this->saveLog = $saveLog;
+        // if log saving is enabled, specify a folder for storing them
+        if ($this->saveLog) {
+            $pathToLogFile
+                ? $this->pathToLogFile = $pathToLogFile
+                : throw new UnspecifiedFilePathException("Error log file path not specified!");
+        }
         /**
          * Register errors handler methods
          */

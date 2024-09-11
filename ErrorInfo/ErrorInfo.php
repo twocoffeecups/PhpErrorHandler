@@ -2,6 +2,8 @@
 
 namespace TwoCoffeCups\PHPErrorHandler\ErrorInfo;
 
+use TwoCoffeCups\PHPErrorHandler\TraceStack\TraceStackCollection;
+
 class ErrorInfo
 {
     /**
@@ -29,10 +31,10 @@ class ErrorInfo
     public string $message;
 
     /**
-     * Trace stack array
-     * @var array
+     * Trace stack collection
+     * @var TraceStackCollection
      */
-    public array $stackTrace;
+    public TraceStackCollection $stackTrace;
 
 
     /**
@@ -40,9 +42,9 @@ class ErrorInfo
      * @param string $traceAsString
      * @param int $errNo
      * @param string $errMsg
-     * @param array $trace
+     * @param TraceStackCollection $trace
      */
-    public function __construct(string $errorType, string $traceAsString, int $errNo, string $errMsg, array $trace,)
+    public function __construct(string $errorType, string $traceAsString, int $errNo, string $errMsg, TraceStackCollection $trace,)
     {
         $this->errorType = $errorType;
         $this->traceAsString = $traceAsString;

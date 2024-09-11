@@ -1,8 +1,8 @@
 <?php
 
-namespace TwoCoffeCups\PHPErrorHandler\StackTrace;
+namespace TwoCoffeCups\PHPErrorHandler\TraceStack;
 
-class StackTraceProperties
+class TraceStackProperties
 {
     /**
      * File name

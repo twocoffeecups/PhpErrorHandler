@@ -17,7 +17,7 @@
         }
 
         .header__container {
-            max-width: 900px;
+            max-width: 1400px;
             padding: 8px;
         }
 
@@ -51,13 +51,31 @@
 </header>
 
 <div class="container my-5">
-    <div class="mx-auto" style="max-width: 900px">
+    <div class="mx-auto" style="max-width: 1400px">
         <ul class="nav nav-pills mb-3" id="error__nav__tab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="error__tab" data-bs-toggle="tab" data-bs-target="#nav__error" type="button" role="tab" aria-controls="nav__error" aria-selected="true">Error</button>
+                <button
+                        class="nav-link  active"
+                        id="error__tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#nav__error"
+                        type="button" role="tab"
+                        aria-controls="nav__error"
+                        aria-selected="true">
+                    Error
+                </button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="trace__tab" data-bs-toggle="tab" data-bs-target="#nav__trace" type="button" role="tab" aria-controls="nav__trace" aria-selected="false">Trace</button>
+                <button
+                        class="nav-link"
+                        id="trace__tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#nav__trace"
+                        type="button" role="tab"
+                        aria-controls="nav__trace"
+                        aria-selected="false">
+                    Trace
+                </button>
             </li>
         </ul>
         <div class="tab-content" id="error__tab">
@@ -65,7 +83,7 @@
             <div class="tab-pane fade show active" id="nav__error" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
 
                 <!-- Error message -->
-                <div class="card my-2 mx-auto" style="max-width: 900px">
+                <div class="card my-2 mx-auto" style="max-width: 1400px">
                     <div class="card-body error__info__container d-flex flex-column">
                         <ul class="list-unstyled">
                             <li>Error code: <b><?=$errorInfo->errNo?></b></li>
@@ -73,43 +91,45 @@
                         </ul>
                     </div>
                 </div>
+                <!-- Trace -->
 
-                <!-- Files -->
-                <div class="mx-auto" style="max-width: 900px">
-                    <div class="accordion" id="error__stack__trace">
+                <!-- V1 -->
+                <div class="d-flex align-items-start my-4" style="max-height: 600px; max-width: 1400px">
+                    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" style="max-width: 450px" aria-orientation="vertical">
                         <?php foreach ($errorInfo->stackTrace->getAll() as $id => $trace): ?>
-<!--                        --><?php //foreach ($errorInfo->stackTrace as $id => $trace): ?>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button"
-                                            type="button"
-                                            data-bs-toggle="collapse"
-                                            data-bs-target="#collapse-<?=$id?>"
-                                            aria-expanded="<?=$id==0 ? 'true' : 'false' ?>"
-                                            aria-controls="collapse-<?=$id?>">
-                                        <ul class="list-unstyled">
-                                            <li>
-                                                <span>
-                                                    <?=$trace->class && $trace->type ? $trace->class . $trace->type:''?><?=$trace->function ? $trace->function.'()': ''?>
-                                                </span><br>
-                                            </li>
-                                            <li class="mt-1">
-                                                <span>
-                                                    In file <b><?=$trace->fileName?></b> on line <b><?=$trace->line?></b>
-                                                </span>
-                                            </li>
-                                        </ul>
-                                    </button>
-                                </h2>
-                                <div id="collapse-<?=$id?>"
-                                     class="accordion-collapse collapse show"
-                                     data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <?=$trace->file?>
-                                    </div>
+                            <button
+                                    class="btn btn-outline-primary rounded-0 <?=$id==0 ? 'active':'';?>"
+                                    id="v-pills-home-tab"
+                                    data-bs-toggle="pill"
+                                    style="max-width: 430px; font-size: 0.9em"
+                                    data-bs-target="#v-pills-<?=$id?>"
+                                    type="button" role="tab"
+                                    aria-controls="v-pills-<?=$id?>"
+                                    aria-selected="true">
+                                <div class="d-flex flex-column align-items-start">
+                                    <span>
+                                    In file:
+                                    </span>
+                                    <span>
+                                        <b><?=$trace->fileName?></b>
+                                    </span>
+                                    <span>
+                                        on line <b><?=$trace->line?></b>
+                                    </span>
                                 </div>
+                            </button>
+                        <?php endforeach;?>
+                    </div>
+                    <div class="tab-content" id="v-pills-tabContent" style="overflow-x: auto; width: 100%; max-width: 950px">
+                        <?php foreach ($errorInfo->stackTrace->getAll() as $id => $trace): ?>
+                            <div
+                                class="tab-pane fade <?=$id==0 ? 'show active':'';?>"
+                                id="v-pills-<?=$id?>" role="tabpanel"
+                                aria-labelledby="v-pills-<?=$id?>-tab"
+                                tabindex="0">
+                                <?=$trace->file?>
                             </div>
-                        <?php endforeach ?>
+                        <?php endforeach;?>
                     </div>
                 </div>
             </div>

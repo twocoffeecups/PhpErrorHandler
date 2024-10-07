@@ -2,12 +2,12 @@
     "name": "twocoffeecups/php-error-handler",
     "type": "library",
     "description": "A simple and easy php error handler.",
-    "keywords": ["errors", "handler", "debug"],
+    "keywords": ["errors", "handler", "debug", "php"],
     "license": "MIT",
+    "version": "0.0.1",
     "authors": [
         {
-            "name": "Bogdan Pristupa",
-            "email": "Dr.Moro94@gmail.com"
+            "name": "Bogdan Pristupa"
         }
     ],
 

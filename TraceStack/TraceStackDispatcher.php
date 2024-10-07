@@ -36,18 +36,18 @@ class TraceStackDispatcher
     {
         $fileWithError = file($file);
         $maxLineInFile = 5;
-        $str = "";
+        $str = "<div class='code__container' style='padding: 8px; white-space: pre; color: white; background-color: black'>";
         foreach ($fileWithError as $lineInFile => $sting) {
 
             if(($lineInFile <= ($line + $maxLineInFile) && $lineInFile >= ($line - $maxLineInFile)) && $lineInFile !== $line - 1) {
-                $str .= "<pre style='padding: 0; margin: 0'>$lineInFile : $sting</pre> <br>";
+                $str .= "<span style='padding: 0; margin: 0; font-size: 0.9em'> $lineInFile : $sting</span><br>";
             }
             if($lineInFile === $line - 1) {
-                $str .= "<pre style='padding: 0; margin: 0'>$lineInFile : <b style='color: white; background-color: red; padding: 4px'>$sting</b></pre> <br>";
+                $str .= "<span style='padding: 0; margin: 0; font-size: 0.9em'> $lineInFile : <b style='color: white; background-color: red; padding: 2px'>$sting</b></span><br>";
             }
         }
         $str = str_replace(['<?php', '?>', '<?', '<?='], '', $str);
-        return $str;
+        return $str . "</div>";
     }
 
     /**

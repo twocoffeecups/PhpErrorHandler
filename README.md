@@ -9,7 +9,7 @@ An easy-to-use PHP error handler that helps with code debugging and allows you t
 
 Use this command: 
 ```
-composer install twocoffeecups/php-error-handler
+composer require twocoffeecups/php-error-handler
 ```
 
 ### Usage
